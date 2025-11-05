@@ -1,899 +1,712 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
-    <meta name="facebook-domain-verification" content="n4iefva5eni501ilmsqq0hwesx2uz6" />
-    <title>Produlse - Servicios de Alojamiento y Hospedaje</title>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="facebook-domain-verification" content="2na4nrttxwtc40u90om37x28vyxhox" />
+  <title>Ecoranch - Call Center y Servicios Empresariales</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Open Sans', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-
-        /* Header */
-        header {
-            background: linear-gradient(45deg, #1565c0, #1976d2);
-            color: white;
-            padding: 20px 0;
+    /* Custom scrollbar */
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+    .scrollbar-hide {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    
+    /* Hero background with overlay - NUEVO DISEÑO ROJO */
+    .hero-bg {
+      background: linear-gradient(135deg, #dc2626 0%, #ef4444 25%, #f87171 50%, #fb7185 75%, #fda4af 100%);
       position: relative;
       overflow: hidden;
     }
     
-        header::before {
+    .hero-bg::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="20" cy="80" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="80" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
-            animation: float 20s infinite linear;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
-        }
-
-        .header-content {
-            text-align: center;
+      background-image: url('https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.15;
+      z-index: 1;
+    }
+    
+    .hero-content {
       position: relative;
       z-index: 2;
-            padding: 80px 0;
-        }
+    }
+    
+    /* Professional card shadows - NUEVO ESTILO ROJO */
+    .professional-card {
+      background: linear-gradient(145deg, #7f1d1d, #991b1b);
+      border: 2px solid #dc2626;
+      box-shadow: 0 20px 40px rgba(220, 38, 38, 0.4), 0 0 20px rgba(239, 68, 68, 0.3);
+      transition: all 0.5s ease;
+    }
+    
+    .professional-card:hover {
+      transform: translateY(-12px) rotateX(5deg);
+      box-shadow: 0 30px 60px rgba(220, 38, 38, 0.6), 0 0 30px rgba(239, 68, 68, 0.5);
+      border-color: #fb7185;
+    }
 
-        .logo {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 10px;
-            letter-spacing: 2px;
-        }
+    /* Gradient text effect - NEGRO SUPER LLAMATIVO */
+    .gradient-text {
+      color: #000000 !important;
+      -webkit-text-fill-color: #000000 !important;
+      text-shadow: 0 0 50px rgba(255, 0, 0, 0.8), 0 0 100px rgba(255, 69, 0, 0.6), 0 0 150px rgba(255, 215, 0, 0.4);
+      filter: drop-shadow(0 0 20px rgba(255, 215, 0, 1)) drop-shadow(0 0 40px rgba(255, 0, 0, 0.8)) drop-shadow(0 0 60px rgba(255, 255, 255, 0.5));
+      font-weight: 900;
+      letter-spacing: 3px;
+    }
 
-        .logo-subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            margin-bottom: 30px;
-            font-weight: 300;
-        }
+    /* WhatsApp button animation - NUEVO DISEÑO */
+    .whatsapp-btn {
+      background: linear-gradient(135deg, #25d366, #128c7e);
+      animation: bounce 3s infinite;
+      box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+    }
+    
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) scale(1);
+      }
+      40% {
+        transform: translateY(-10px) scale(1.05);
+      }
+      60% {
+        transform: translateY(-5px) scale(1.02);
+      }
+    }
 
-        .tagline {
-            font-size: 1.1rem;
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.8;
-            opacity: 0.95;
-        }
-
-        /* Navigation */
-        nav {
-            background: rgba(21, 101, 192, 0.95);
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-        }
-
-        .nav-content {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 40px;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 10px 15px;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            background: rgba(255,255,255,0.1);
-            color: #bdbdbd;
-        }
-
-        /* About Section */
-        .about-section {
-            padding: 80px 0;
-            background: #f8f9fa;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 20px;
-            color: #1565c0;
-            font-weight: 700;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.1rem;
-            color: #666;
-            margin-bottom: 60px;
-            font-style: italic;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: start;
-            margin-top: 40px;
-        }
-
-        .about-text {
-            font-size: 1rem;
-            line-height: 1.8;
-            color: #555;
-            text-align: justify;
-        }
-
-        .experience-highlight {
-            background: linear-gradient(45deg, #607d8b, #78909c);
-            color: white;
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-            margin: 30px 0;
-        }
-
-        .experience-highlight h3 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-
-        /* Residencias Section */
-        .residencias-section {
-            padding: 80px 0;
-            background: white;
-        }
-
-        .residencias-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            margin-top: 60px;
-        }
-
-        .residencia-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-
-        .estancia-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .residencia-image {
-            height: 250px;
-            overflow: hidden;
-        }
-
-        .estancia-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .estancia-card:hover .estancia-image img {
-            transform: scale(1.05);
-        }
-
-        .residencia-content {
-            padding: 30px;
-        }
-
-        .estancia-content h3 {
-            font-size: 1.4rem;
-            color: #1565c0;
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        .estancia-content p {
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .residencia-features {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .feature {
-            background: #bdbdbd;
-            color: white;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-        .services-section {
-            padding: 80px 0;
-            background: white;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            margin-top: 60px;
-        }
-
-        .service-card {
-            background: #f8f9fa;
-            padding: 40px 30px;
-            border-radius: 10px;
-            border-left: 5px solid #bdbdbd;
-            transition: all 0.3s ease;
-            height: auto;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        }
-
-        .service-card h3 {
-            font-size: 1.4rem;
-            color: #1565c0;
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-
-        .service-list {
-            list-style: none;
-        }
-
-        .service-list li {
-            padding: 8px 0;
-            color: #555;
-            border-bottom: 1px solid #eee;
+    /* Animated border - NUEVO AZUL/VERDE */
+    .animated-border {
       position: relative;
-            padding-left: 20px;
-        }
-
-        .service-list li:before {
-            content: "•";
-            color: #bdbdbd;
-            font-weight: bold;
+      background: linear-gradient(145deg, #1e3a8a, #1e40af);
+    }
+    
+    .animated-border::before {
+      content: '';
       position: absolute;
-            left: 0;
-        }
+      top: -3px;
+      left: -3px;
+      right: -3px;
+      bottom: -3px;
+      border-radius: inherit;
+      background: linear-gradient(45deg, #0891b2, #38bdf8, #f59e0b, #0891b2);
+      background-size: 400% 400%;
+      animation: gradientShift 4s ease infinite;
+      z-index: -1;
+    }
+    
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
-        .service-list li:last-child {
-            border-bottom: none;
-        }
-
-        /* Three Column Services Layout */
-        .services-overview {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin: 60px 0;
-        }
-
-        .service-overview-card {
-            background: linear-gradient(45deg, #1565c0, #1976d2);
-            color: white;
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        .service-overview-card h4 {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            color: #bdbdbd;
-        }
-
-        .service-overview-card ul {
-            list-style: none;
-            text-align: left;
-        }
-
-        .service-overview-card li {
-            padding: 5px 0;
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-
-        /* Team Section */
-        .team-section {
-            padding: 80px 0;
-            background: #f8f9fa;
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
-            margin-top: 60px;
-        }
-
-        .team-member {
-            background: white;
-            padding: 40px 30px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-
-        .team-member:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-        }
-
-        .team-member img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 20px;
-            border: 4px solid #bdbdbd;
-        }
-
-        .team-member h4 {
-            font-size: 1.3rem;
-            color: #1565c0;
-            margin-bottom: 5px;
-        }
-
-        .team-member .position {
-            color: #bdbdbd;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-
-        .team-member .quote {
-            font-style: italic;
-            color: #666;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        /* Contact Section */
-        .contact-section {
-            padding: 80px 0;
-            background: linear-gradient(45deg, #1565c0, #1976d2);
-            color: white;
-        }
-
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            margin-top: 40px;
-        }
-
-        .contact-info h3 {
-            font-size: 1.5rem;
-            margin-bottom: 30px;
-            color: #bdbdbd;
-        }
-
-        .contact-item {
+    /* Hexagon shapes */
+    .hexagon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #dc2626, #fb7185);
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
       display: flex;
-            align-items: flex-start;
-            margin-bottom: 20px;
-            padding: 15px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 8px;
-        }
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 30px rgba(220, 38, 38, 0.6);
+    }
 
-        .contact-item i {
-            color: #bdbdbd;
-            margin-right: 15px;
-            margin-top: 3px;
-            width: 20px;
-        }
+    /* Diagonal sections */
+    .diagonal-section {
+      transform: skewY(-3deg);
+    }
+    
+    .diagonal-content {
+      transform: skewY(3deg);
+    }
 
-        .contact-item span {
-            line-height: 1.6;
-        }
-
-        .business-hours {
-            background: rgba(255,255,255,0.1);
-            padding: 30px;
-            border-radius: 10px;
-            margin-top: 30px;
-        }
-
-        .business-hours h4 {
-            color: #bdbdbd;
-            margin-bottom: 20px;
-            font-size: 1.2rem;
-        }
-
-        .business-hours p {
-            margin-bottom: 10px;
-            line-height: 1.6;
-        }
-
-        .business-hours strong {
-            color: #bdbdbd;
-        }
-
-        /* Footer */
-        footer {
-            background: #1a252f;
-            color: white;
-            text-align: center;
-            padding: 40px 0;
-        }
-
-        footer p {
-            margin-bottom: 10px;
-            opacity: 0.8;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .logo {
-                font-size: 2.5rem;
-            }
-
-            .nav-links {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .about-content,
-            .contact-content {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-
-            .services-overview {
-                grid-template-columns: 1fr;
-            }
-
-            .residencias-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .residencia-card {
-                margin-bottom: 20px;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .header-content {
-                padding: 40px 0;
-            }
-        }
-
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Additional styling to match produlse theme */
-        .highlight-text {
-            color: #bdbdbd;
-            font-weight: 600;
-        }
-
-        .mission-section {
-            background: linear-gradient(45deg, #607d8b, #78909c);
-            color: white;
-            padding: 40px;
-            border-radius: 10px;
-            margin: 40px 0;
-            text-align: center;
-        }
-
-        .mission-section h3 {
-            margin-bottom: 15px;
-            font-size: 1.4rem;
-        }
-
-        /* WhatsApp Button */
-        .whatsapp-float {
-            position: fixed;
-            width: 60px;
-            height: 60px;
-            bottom: 20px;
-            right: 20px;
-            background-color: #25d366;
-            color: white;
-            border-radius: 50px;
-            text-align: center;
-            font-size: 30px;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-            z-index: 1000;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            animation: pulse 2s infinite;
-        }
-
-        .whatsapp-float:hover {
-            background-color: #128c7e;
-            transform: scale(1.1);
-            color: white;
-            text-decoration: none;
-        }
-
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
-            }
-            70% {
-                box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-            }
-        }
-
-        /* Responsive WhatsApp button */
-        @media (max-width: 768px) {
-            .whatsapp-float {
-                width: 55px;
-                height: 55px;
-                font-size: 26px;
-                bottom: 15px;
-                right: 15px;
-            }
-        }
+    /* Floating elements */
+    .floating {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    /* Efecto de brillo pulsante para el nombre - NEGRO CON RESPLANDOR */
+    .company-glow {
+      animation: glow 1.5s ease-in-out infinite alternate;
+    }
+    
+    @keyframes glow {
+      from {
+        filter: drop-shadow(0 0 30px rgba(255, 0, 0, 1)) drop-shadow(0 0 60px rgba(255, 69, 0, 0.8)) drop-shadow(0 0 90px rgba(255, 215, 0, 0.6)) drop-shadow(0 0 120px rgba(255, 255, 255, 0.3));
+        text-shadow: 0 0 50px rgba(255, 0, 0, 0.8), 0 0 100px rgba(255, 69, 0, 0.6), 0 0 150px rgba(255, 255, 255, 0.4);
+      }
+      to {
+        filter: drop-shadow(0 0 50px rgba(255, 0, 0, 1)) drop-shadow(0 0 100px rgba(255, 69, 0, 1)) drop-shadow(0 0 150px rgba(255, 215, 0, 0.8)) drop-shadow(0 0 200px rgba(255, 255, 255, 0.5));
+        text-shadow: 0 0 80px rgba(255, 0, 0, 1), 0 0 150px rgba(255, 69, 0, 0.8), 0 0 200px rgba(255, 255, 255, 0.6);
+      }
+    }
+    
+    /* Fondo animado para destacar el nombre - ROJO BRILLANTE */
+    .name-highlight {
+      background: linear-gradient(45deg, rgba(255, 0, 0, 0.2), rgba(255, 69, 0, 0.2), rgba(255, 215, 0, 0.1), rgba(255, 20, 147, 0.2));
+      background-size: 400% 400%;
+      animation: gradientShift 3s ease infinite;
+      border: 4px solid #ff0000;
+      background-clip: padding-box;
+      box-shadow: 0 0 80px rgba(255, 0, 0, 0.6), inset 0 0 80px rgba(255, 69, 0, 0.2), 0 0 120px rgba(255, 215, 0, 0.4);
+      border-radius: 25px;
+    }
   </style>
 </head>
-<body>
-    <!-- Header -->
-    <header id="home">
-        <div class="container">
-            <div class="header-content">
-                <h1 class="logo">PRODULSE</h1>
-                <p class="logo-subtitle">Servicios de Alojamiento y Hospedaje</p>
-                <p class="tagline">Tu hogar lejos del hogar. Ofrecemos servicios de alojamiento cómodos y seguros en Mar del Plata.</p>
+<body class="bg-gray-900 text-white font-sans leading-relaxed overflow-x-hidden">
+
+  <!-- HEADER WITH HERO BACKGROUND - COMPLETAMENTE NUEVO DISEÑO -->
+  <header class="hero-bg min-h-screen flex items-center relative">
+    <div class="hero-content w-full">
+      <!-- Navigation flotante en la parte superior -->
+      <nav class="fixed top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-lg border-b border-red-500/30">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+          <ul class="flex justify-center space-x-8 text-red-200 text-lg font-bold"
+            <li><a href="#inicio" class="hover:text-yellow-400 transition duration-300 relative group">
+              <span>🏠</span> Inicio
+              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-400 group-hover:w-full transition-all duration-300"></span>
+            </a></li>
+            <li><a href="#nosotros" class="hover:text-yellow-400 transition duration-300 relative group">
+              <span>👥</span> Nosotros
+              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-400 group-hover:w-full transition-all duration-300"></span>
+            </a></li>
+            <li><a href="#soluciones" class="hover:text-yellow-400 transition duration-300 relative group">
+              <span>⚡</span> Soluciones
+              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-400 group-hover:w-full transition-all duration-300"></span>
+            </a></li>
+            <li><a href="#equipo" class="hover:text-yellow-400 transition duration-300 relative group">
+              <span>🎯</span> Equipo
+              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-400 group-hover:w-full transition-all duration-300"></span>
+            </a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Hero Content - DISEÑO HEXAGONAL -->
+      <div class="max-w-7xl mx-auto px-6 py-20 mt-16">
+        <div class="text-center mb-12">
+          <div class="flex items-center justify-center mb-8">
+            <div class="hexagon mr-6 floating">
+              <span class="text-2xl">📞</span>
+            </div>
+            <div class="name-highlight p-12 rounded-3xl mb-6">
+              <h1 class="text-8xl md:text-9xl font-black tracking-wider transform hover:scale-110 transition-all duration-500 company-glow">
+                <span class="gradient-text relative">
+                  <span class="absolute inset-0 blur-2xl bg-gradient-to-r from-red-400 to-yellow-400 opacity-80"></span>
+                  <span class="relative z-10" style="color: #000000 !important; -webkit-text-fill-color: #000000 !important;">Ecoranch</span>
+                </span>
+              </h1>
+              <div class="flex justify-center mt-6">
+                <div class="w-48 h-2 bg-gradient-to-r from-red-400 via-yellow-400 to-orange-400 rounded-full animate-pulse shadow-lg"></div>
+              </div>
+              <div class="text-center mt-6">
+                <p class="text-red-300 text-2xl font-black animate-bounce">🔥 ¡EL MEJOR CALL CENTER! 🔥</p>
+              </div>
+            </div>
+            <div class="hexagon ml-6 floating">
+              <span class="text-2xl">📈</span>
+            </div>
+          </div>
+          
+              <p class="text-red-200 text-3xl md:text-5xl mb-12 font-black">
+                🔥 Revolucionamos la Comunicación Empresarial 🔥
+              </p>
+          
+          <!-- Texto adicional destacado -->
+          <div class="bg-gradient-to-r from-red-900/80 to-rose-900/80 p-8 rounded-3xl border-4 border-yellow-400 mb-12 backdrop-blur-lg shadow-2xl">
+            <p class="text-yellow-300 text-2xl md:text-4xl font-black mb-4 animate-pulse">
+              🔥 LÍDER EN SOLUCIONES DE CALL CENTER 🔥
+            </p>
+            <p class="text-red-200 text-lg font-bold">
+              Con <span class="font-black text-2xl" style="color: #000000 !important; text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);">Ecoranch</span>, tu empresa alcanza nuevas alturas
+            </p>
+          </div>
+        </div>
+        
+        <!-- Nueva estructura en tres columnas -->
+        <div class="grid lg:grid-cols-3 gap-12 items-start">
+          <!-- Columna 1 - Cards de información -->
+          <div class="space-y-6">
+                <div class="bg-red-800/50 p-6 rounded-xl border border-red-400 floating shadow-lg" style="animation-delay: 0.5s;">
+                  <div class="text-yellow-400 text-3xl mb-4">🚀</div>
+                  <h3 class="text-xl font-bold mb-2 text-red-300">Innovación</h3>
+                  <p class="text-red-200 text-sm font-bold">Ecoranch: Tecnología de vanguardia</p>
+                </div>
+                <div class="bg-red-800/50 p-6 rounded-xl border border-red-400 floating shadow-lg" style="animation-delay: 1s;">
+                  <div class="text-yellow-400 text-3xl mb-4">⭐</div>
+                  <h3 class="text-xl font-bold mb-2 text-red-300">Excelencia</h3>
+                  <p class="text-red-200 text-sm font-bold">Ecoranch: Servicio de calidad superior</p>
+                </div>
+          </div>
+          
+          <!-- Columna 2 - Imagen central -->
+          <div class="relative flex justify-center">
+            <div class="relative">
+              <img 
+                src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2015&q=80" 
+                alt="Equipo de call center moderno trabajando" 
+                class="rounded-3xl shadow-2xl professional-card floating w-full max-w-md"
+              />
+              <!-- Elementos decorativos flotantes -->
+              <div class="absolute -top-8 -right-8 hexagon floating" style="animation-delay: 1s;">
+                <span class="text-lg">📈</span>
+              </div>
+              <div class="absolute -bottom-8 -left-8 hexagon floating" style="animation-delay: 2s;">
+                <span class="text-lg">💎</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Columna 3 - Más cards -->
+          <div class="space-y-6">
+                <div class="bg-red-800/50 p-6 rounded-xl border border-red-400 floating shadow-lg" style="animation-delay: 1.5s;">
+                  <div class="text-yellow-400 text-3xl mb-4">🎯</div>
+                  <h3 class="text-xl font-bold mb-2 text-red-300">Precisión</h3>
+                  <p class="text-red-200 text-sm font-bold">Ecoranch: Resultados exactos garantizados</p>
+                </div>
+                <div class="bg-red-800/50 p-6 rounded-xl border border-red-400 floating shadow-lg" style="animation-delay: 2s;">
+                  <div class="text-yellow-400 text-3xl mb-4">💼</div>
+                  <h3 class="text-xl font-bold mb-2 text-red-300">Profesional</h3>
+                  <p class="text-red-200 text-sm font-bold">Ecoranch: Equipo altamente capacitado</p>
+                </div>
+          </div>
+        </div>
       </div>
     </div>
   </header>
 
-    <!-- Navigation -->
-    <nav>
-        <div class="container">
-            <div class="nav-content">
-                <ul class="nav-links">
-                    <li><a href="#home">Inicio</a></li>
-                    <li><a href="#about">Nosotros</a></li>
-                    <li><a href="#services">Servicios</a></li>
-                    <li><a href="#residencias">Residencias</a></li>
-                    <li><a href="#team">Equipo</a></li>
-                    <li><a href="#contact">Contacto</a></li>
-                </ul>
+  <!-- SECCIÓN NOSOTROS - DISEÑO DIAGONAL -->
+  <section id="nosotros" class="diagonal-section bg-gradient-to-r from-red-900 via-rose-900 to-pink-900 py-32">
+    <div class="diagonal-content">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-20">
+          <div class="flex justify-center items-center mb-8">
+            <div class="hexagon mr-4">
+              <span class="text-2xl">🏢</span>
+            </div>
+            <h2 class="text-6xl font-black gradient-text">¿Quiénes Somos?</h2>
+          </div>
+          <div class="w-40 h-1 bg-gradient-to-r from-yellow-400 to-pink-500 mx-auto rounded-full"></div>
+        </div>
+        
+        <!-- Grid con diseño alternado -->
+        <div class="grid lg:grid-cols-3 gap-12 items-center">
+          <!-- Columna 1 -->
+          <div class="space-y-8">
+            <div class="professional-card p-8 rounded-2xl animated-border">
+              <div class="flex items-center mb-6">
+                <div class="w-12 h-12 bg-gradient-to-r from-red-500 to-pink-500 rounded-full flex items-center justify-center mr-4">
+                  <span class="text-xl">🎨</span>
+                </div>
+                <h3 class="text-2xl font-bold text-red-300">Creatividad</h3>
+              </div>
+              <p class="text-gray-300">Diseñamos soluciones únicas y personalizadas para cada cliente.</p>
+      </div>
+      
+            <div class="professional-card p-8 rounded-2xl animated-border">
+              <div class="flex items-center mb-6">
+                <div class="w-12 h-12 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full flex items-center justify-center mr-4">
+                  <span class="text-xl">⚡</span>
+                </div>
+                <h3 class="text-2xl font-bold text-cyan-300">Velocidad</h3>
+              </div>
+              <p class="text-gray-300">Respuestas rápidas y eficientes en cada interacción.</p>
             </div>
         </div>
-    </nav>
 
-    <!-- About Section -->
-    <section id="about" class="about-section">
-        <div class="container">
-            <h2 class="section-title">¿Por qué elegir Produlse?</h2>
-            <div class="about-content">
-                <div>
-                    <p class="about-text">
-                        Somos Produlse, una empresa especializada en servicios de alojamiento y hospedaje en Mar del Plata. Ofrecemos soluciones integrales para huéspedes que buscan comodidad, seguridad y la mejor experiencia durante su estadía. Nuestro compromiso es brindar un servicio personalizado que haga que cada huésped se sienta como en casa.
-                    </p>
-                    <p class="about-text">
-                        Contamos con una amplia red de propiedades cuidadosamente seleccionadas y verificadas en la ciudad. Nuestro equipo profesional se encarga de gestionar todos los aspectos del alojamiento para garantizar una experiencia memorable y sin complicaciones.
-                    </p>
+          <!-- Columna 2 - Imagen central -->
+          <div class="flex justify-center">
+        <div class="relative">
+          <img 
+                src="https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+                alt="Equipo colaborativo en oficina moderna" 
+                class="rounded-full w-80 h-80 object-cover professional-card floating border-8 border-red-400"
+              />
+              <!-- Íconos orbitales -->
+              <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                <div class="w-16 h-16 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center floating">
+                  <span class="text-xl">🌟</span>
                 </div>
-                <div>
-                    <div class="experience-highlight">
-                        <h3>Inteligencia artificial</h3>
               </div>
-                    <p class="about-text">
-                        Ofrecemos servicios integrales a través de nuestro <strong class="highlight-text">SISTEMA DE ATENCIÓN COMPLETA</strong> para todas las necesidades de alojamiento. Somos referentes en hospitalidad y atención al huésped en Mar del Plata.
-                    </p>
-                    <div class="mission-section">
-                        <h3>Nuestra Misión</h3>
-                        <p>Brindar el mejor servicio de alojamiento al mejor precio posible, sin comprometer la calidad, comodidad y seguridad de nuestros huéspedes en Mar del Plata</p>
+              <div class="absolute bottom-0 right-0">
+                <div class="w-16 h-16 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center floating" style="animation-delay: 1s;">
+                  <span class="text-xl">🚀</span>
+                </div>
+          </div>
+        </div>
+      </div>
+      
+          <!-- Columna 3 -->
+          <div class="space-y-8">
+            <div class="professional-card p-8 rounded-2xl animated-border">
+              <div class="flex items-center mb-6">
+                <div class="w-12 h-12 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full flex items-center justify-center mr-4">
+                  <span class="text-xl">🎯</span>
+                </div>
+                <h3 class="text-2xl font-bold text-cyan-300">Precisión</h3>
+              </div>
+              <p class="text-gray-300">Cada llamada es una oportunidad de generar valor excepcional.</p>
+            </div>
+            
+            <div class="professional-card p-8 rounded-2xl animated-border">
+              <div class="flex items-center mb-6">
+                <div class="w-12 h-12 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full flex items-center justify-center mr-4">
+                  <span class="text-xl">💎</span>
+                </div>
+                <h3 class="text-2xl font-bold text-cyan-300">Calidad</h3>
+              </div>
+              <p class="text-gray-300">Estándares premium en cada servicio que ofrecemos.</p>
+          </div>
           </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Residencias Section -->
-    <section id="residencias" class="residencias-section">
-        <div class="container">
-            <h2 class="section-title">Nuestras Residencias</h2>
-            <p class="section-subtitle">Descubre nuestras opciones de alojamiento premium en Mar del Plata</p>
-            
-            <div class="residencias-grid">
-                <div class="residencia-card">
-                    <div class="residencia-image">
-                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400&h=250&fit=crop" alt="Residencia Premium">
-                    </div>
-                    <div class="residencia-content">
-                        <h3>Residencia Premium</h3>
-                        <p>Residencia con todas las comodidades y servicios de alta calidad en el corazón de Mar del Plata.</p>
-                        <div class="residencia-features">
-                            <span class="feature">5 habitaciones</span>
-                            <span class="feature">3 baños</span>
-                            <span class="feature">Jardín privado</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="residencia-card">
-                    <div class="residencia-image">
-                        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=400&h=250&fit=crop" alt="Residencia Ejecutiva">
-                    </div>
-                    <div class="residencia-content">
-                        <h3>Residencia Ejecutiva</h3>
-                        <p>Ideal para ejecutivos y viajeros de negocios. Residencia moderna con todas las comodidades necesarias para una estadía productiva.</p>
-                        <div class="residencia-features">
-                            <span class="feature">4 habitaciones</span>
-                            <span class="feature">2 baños</span>
-                            <span class="feature">Oficina privada</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="residencia-card">
-                    <div class="residencia-image">
-                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=250&fit=crop" alt="Residencia Familiar">
-                    </div>
-                    <div class="residencia-content">
-                        <h3>Residencia Familiar</h3>
-                        <p>Perfecta para familias y grupos grandes. Residencia espaciosa con todas las comodidades necesarias para una estadía confortable.</p>
-                        <div class="residencia-features">
-                            <span class="feature">6 habitaciones</span>
-                            <span class="feature">3 baños</span>
-                            <span class="feature">Piscina privada</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <!-- SERVICIOS - DISEÑO EN MOSAICO -->
+  <section id="soluciones" class="bg-gray-900 py-32">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-20">
+        <div class="flex justify-center items-center mb-8">
+          <div class="hexagon mr-4">
+            <span class="text-2xl">⚡</span>
+          </div>
+          <h2 class="text-6xl font-black gradient-text">Nuestras Soluciones</h2>
+          <div class="hexagon ml-4">
+            <span class="text-2xl">🔧</span>
+          </div>
         </div>
-    </section>
-    <section id="services" class="services-section">
-        <div class="container">
-    <!-- Services Section -->
-    <section id="services" class="services-section">
-        <div class="container">
-            <h2 class="section-title">Servicios</h2>
-            <p class="section-subtitle">Todo lo que necesitas para tu estadía perfecta</p>
-
-            <!-- Three Column Overview -->
-            <div class="services-overview">
-                <div class="service-overview-card">
-                    <h4>Alojamiento Temporal</h4>
-                    <ul>
-                        <li>Habitaciones individuales y compartidas</li>
-                        <li>Departamentos completamente equipados</li>
-                        <li>Estadías cortas y prolongadas</li>
-                        <li>Ubicaciones estratégicas en Mar del Plata</li>
-                        <li>Precios competitivos y flexibles</li>
-                    </ul>
+        <div class="w-40 h-1 bg-gradient-to-r from-red-400 to-yellow-500 mx-auto rounded-full"></div>
+      </div>
+      
+      <!-- Mosaico de servicios con diseño alternado -->
+      <div class="grid gap-8 lg:grid-cols-4 md:grid-cols-2">
+        
+        <!-- Servicio 1 - Grande -->
+        <div class="lg:col-span-2 lg:row-span-2">
+          <div class="professional-card rounded-3xl p-10 h-full animated-border relative overflow-hidden">
+            <div class="absolute top-4 right-4">
+              <div class="hexagon">
+                <span class="text-xl">📞</span>
               </div>
-                <div class="service-overview-card">
-                    <h4>Servicios Adicionales</h4>
-                    <ul>
-                        <li>Limpieza y mantenimiento</li>
-                        <li>Ropa de cama y toallas</li>
-                        <li>WiFi de alta velocidad</li>
-                        <li>Servicio de recepción 24/7</li>
-                        <li>Asistencia turística</li>
-                    </ul>
             </div>
-                <div class="service-overview-card">
-                    <h4>Comodidades</h4>
-                    <ul>
-                        <li>Cocina completamente equipada</li>
-                        <li>Aire acondicionado y calefacción</li>
-                        <li>TV por cable e internet</li>
-                        <li>Seguridad las 24 horas</li>
-                        <li>Estacionamiento disponible</li>
-                    </ul>
+            <img 
+              src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+              alt="Centro de atención al cliente" 
+              class="w-full h-48 object-cover rounded-2xl mb-8"
+            />
+            <h3 class="text-3xl font-bold text-red-300 mb-6">Centro de Atención Premium</h3>
+            <p class="text-gray-300 mb-8 text-lg">Servicio 24/7 con agentes especializados y tecnología de última generación.</p>
+            <div class="grid grid-cols-2 gap-4">
+              <div class="flex items-center text-yellow-400">
+                <span class="mr-2">🌟</span>
+                <span class="text-sm">Atención 24/7</span>
+              </div>
+              <div class="flex items-center text-green-400">
+                <span class="mr-2">👥</span>
+                <span class="text-sm">Agentes Expertos</span>
+          </div>
+              <div class="flex items-center text-blue-400">
+                <span class="mr-2">🚀</span>
+                <span class="text-sm">Tecnología Avanzada</span>
+          </div>
+              <div class="flex items-center text-pink-400">
+                <span class="mr-2">📊</span>
+                <span class="text-sm">Reportes Detallados</span>
+          </div>
+          </div>
           </div>
       </div>
       
-            <!-- Detailed Services -->
-            <div class="services-grid">
-                <div class="service-card">
-                    <h3>Alojamiento Residencial</h3>
-                    <p>Ofrecemos una amplia variedad de opciones de alojamiento para satisfacer todas las necesidades de nuestros huéspedes en El Zapallar:</p>
-                    <ul class="service-list">
-                        <li>Habitaciones privadas con baño propio</li>
-                        <li>Habitaciones compartidas con servicios comunes</li>
-                        <li>Departamentos completamente amoblados</li>
-                        <li>Estudios para estadías prolongadas</li>
-                        <li>Alojamiento familiar y para grupos</li>
-                        <li>Opciones pet-friendly disponibles</li>
-                        <li>Ubicaciones cerca del centro y puntos de interés</li>
-                        <li>Transporte público accesible</li>
-                        <li>Ambientes seguros y confortables</li>
-                        <li>Precios accesibles para todos los presupuestos</li>
-                        <li>Contratos flexibles según necesidades</li>
-                    </ul>
+        <!-- Servicio 2 -->
+        <div class="professional-card rounded-3xl p-8 animated-border relative">
+          <div class="absolute top-4 right-4">
+            <div class="w-12 h-12 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center">
+              <span>💰</span>
+            </div>
+          </div>
+          <img 
+            src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+            alt="Ventas telefónicas exitosas" 
+            class="w-full h-32 object-cover rounded-xl mb-6"
+          />
+          <h3 class="text-xl font-bold text-green-300 mb-4">Ventas Telefónicas</h3>
+          <p class="text-gray-300 text-sm">Estrategias probadas para maximizar conversiones.</p>
           </div>
           
-                <div class="service-card">
-                    <h3>Gestión y Mantenimiento</h3>
-                    <p>Nos encargamos de todos los aspectos de gestión y mantenimiento para garantizar que tu estadía sea perfecta desde el primer día:</p>
-                    <ul class="service-list">
-                        <li>Inspección y verificación de propiedades</li>
-                        <li>Limpieza profunda antes del ingreso</li>
-                        <li>Mantenimiento preventivo y correctivo</li>
-                        <li>Gestión de servicios públicos</li>
-                        <li>Atención de emergencias 24/7</li>
-                    </ul>
+        <!-- Servicio 3 -->
+        <div class="professional-card rounded-3xl p-8 animated-border relative">
+          <div class="absolute top-4 right-4">
+            <div class="w-12 h-12 bg-gradient-to-r from-orange-400 to-red-500 rounded-full flex items-center justify-center">
+              <span>🛠️</span>
+            </div>
+          </div>
+          <img 
+            src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=2072&q=80" 
+            alt="Soporte técnico especializado" 
+            class="w-full h-32 object-cover rounded-xl mb-6"
+          />
+          <h3 class="text-xl font-bold text-orange-300 mb-4">Soporte Técnico</h3>
+          <p class="text-gray-300 text-sm">Mesa de ayuda especializada 24/7.</p>
           </div>
           
-                <div class="service-card">
-                    <h3>Servicios Complementarios</h3>
-                    <p>Ofrecemos servicios adicionales para hacer tu estadía aún más cómoda y placentera:</p>
-                    <ul class="service-list">
-                        <li>Asesoramiento turístico personalizado</li>
-                        <li>Reservas de actividades y excursiones</li>
-                        <li>Servicio de traslados desde/hacia aeropuerto</li>
-                        <li>Recomendaciones gastronómicas locales</li>
-                    </ul>
+        <!-- Servicio 4 -->
+        <div class="professional-card rounded-3xl p-8 animated-border relative">
+          <div class="absolute top-4 right-4">
+            <div class="w-12 h-12 bg-gradient-to-r from-pink-400 to-purple-500 rounded-full flex items-center justify-center">
+              <span>📋</span>
+            </div>
+          </div>
+          <img 
+            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+            alt="Investigación y encuestas" 
+            class="w-full h-32 object-cover rounded-xl mb-6"
+          />
+          <h3 class="text-xl font-bold text-pink-300 mb-4">Investigación</h3>
+          <p class="text-gray-300 text-sm">Estudios de mercado y encuestas especializadas.</p>
+          </div>
+          
+        <!-- Servicio 5 -->
+        <div class="professional-card rounded-3xl p-8 animated-border relative">
+          <div class="absolute top-4 right-4">
+            <div class="w-12 h-12 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center">
+              <span>💳</span>
+            </div>
+          </div>
+          <img 
+            src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-4.0.3&auto=format&fit=crop&w=2071&q=80" 
+            alt="Gestión de cobranzas profesional" 
+            class="w-full h-32 object-cover rounded-xl mb-6"
+          />
+          <h3 class="text-xl font-bold text-yellow-300 mb-4">Cobranzas</h3>
+          <p class="text-gray-300 text-sm">Recuperación de cartera con estrategias efectivas.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Team Section -->
-    <section id="team" class="team-section">
-        <div class="container">
-            <h2 class="section-title">Conoce el equipo Produlse</h2>
-            
-            <div class="team-grid">
-                <div class="team-member">
-                    <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=150&h=150&fit=crop&crop=face" alt="Carlos Produlse">
-                    <h4>Carlos Produlse</h4>
-                    <p class="position">Director General</p>
-                    <p class="quote">"Nuestro compromiso es hacer que cada huésped se sienta como en casa, brindando comodidad y calidez en cada detalle"</p>
+  <!-- TESTIMONIOS - DISEÑO CIRCULAR -->
+  <section id="equipo" class="diagonal-section bg-gradient-to-br from-red-900 via-rose-900 to-pink-900 py-32">
+    <div class="diagonal-content">
+      <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-20">
+          <div class="flex justify-center items-center mb-8">
+            <div class="hexagon mr-4">
+              <span class="text-2xl">🎯</span>
+            </div>
+            <h2 class="text-6xl font-black gradient-text">Nuestros Clientes</h2>
           </div>
-
-                <div class="team-member">
-                    <img src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=150&h=150&fit=crop&crop=face" alt="Ana Produlse">
-                    <h4>Ana Produlse</h4>
-                    <p class="position">Gerente de Operaciones</p>
-                    <p class="quote">"La excelencia en el servicio se logra con atención a los detalles y pasión por la hospitalidad"</p>
-            </div>
-
-                <div class="team-member">
-                    <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=150&h=150&fit=crop&crop=face" alt="María Produlse">
-                    <h4>María Produlse</h4>
-                    <p class="position">Coordinadora de Alojamiento</p>
-                    <p class="quote">"Cada propiedad es cuidadosamente seleccionada para garantizar la mejor experiencia de nuestros huéspedes"</p>
-            </div>
-
-                <div class="team-member">
-                    <img src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=150&h=150&fit=crop&crop=face" alt="Diego Produlse">
-                    <h4>Diego Produlse</h4>
-                    <p class="position">Especialista en Atención al Cliente</p>
-                    <p class="quote">"Estamos disponibles 24/7 para asegurar que tu estadía sea perfecta desde el primer momento"</p>
-        </div>
-      </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <h2 class="section-title" style="color: white;">¿Tienes alguna consulta?</h2>
-            
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Ubicación de la Oficina</h3>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Las Lambercianas 7249, Mar Del Plata</span>
+          <div class="w-40 h-1 bg-gradient-to-r from-green-400 to-blue-500 mx-auto rounded-full"></div>
         </div>
         
-                    <h3>Información de Contacto</h3>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <span>+5491164703496</span>
+        <!-- Testimonios en círculo -->
+        <div class="relative">
+          <!-- Centro - Logo o imagen principal -->
+          <div class="flex justify-center mb-16">
+            <div class="w-32 h-32 bg-gradient-to-br from-red-500 to-pink-500 rounded-full flex items-center justify-center text-4xl floating">
+              💎
             </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>produlse@gmail.com</span>
           </div>
-                    <div class="contact-item">
-                        <i class="fas fa-id-card"></i>
-                        <span>CUIL: 23556686084</span>
+
+          <!-- Testimonios distribuidos -->
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            
+            <div class="professional-card rounded-2xl p-8 animated-border floating">
+              <div class="flex items-center mb-6">
+                <img 
+                  class="w-16 h-16 rounded-full border-4 border-cyan-400 mr-4" 
+                  src="https://randomuser.me/api/portraits/women/65.jpg" 
+                  alt="María González"
+            />
+            <div>
+                  <h4 class="font-bold text-cyan-300 text-lg">María González</h4>
+                  <p class="text-yellow-400 text-sm">🏢 CEO TechCorp</p>
+                </div>
+              </div>
+              <p class="text-gray-300 italic">"Nexo Custom revolucionó nuestra atención al cliente. ¡Increíble profesionalismo!"</p>
+              <div class="flex mt-4">
+                <span class="text-yellow-400">⭐⭐⭐⭐⭐</span>
+              </div>
+            </div>
+
+            <div class="professional-card rounded-2xl p-8 animated-border floating" style="animation-delay: 0.5s;">
+              <div class="flex items-center mb-6">
+                <img 
+                  class="w-16 h-16 rounded-full border-4 border-green-400 mr-4" 
+                  src="https://randomuser.me/api/portraits/men/15.jpg" 
+                  alt="Carlos Ruiz"
+            />
+            <div>
+                  <h4 class="font-bold text-green-300 text-lg">Carlos Ruiz</h4>
+                  <p class="text-yellow-400 text-sm">🚀 Director Innovate</p>
+                </div>
+              </div>
+              <p class="text-gray-300 italic">"Nuestras ventas aumentaron 60% con sus estrategias telefónicas."</p>
+              <div class="flex mt-4">
+                <span class="text-yellow-400">⭐⭐⭐⭐⭐</span>
+              </div>
+            </div>
+
+            <div class="professional-card rounded-2xl p-8 animated-border floating" style="animation-delay: 1s;">
+              <div class="flex items-center mb-6">
+                <img 
+                  class="w-16 h-16 rounded-full border-4 border-blue-400 mr-4" 
+                  src="https://randomuser.me/api/portraits/women/38.jpg" 
+                  alt="Ana Martínez"
+            />
+            <div>
+                  <h4 class="font-bold text-blue-300 text-lg">Ana Martínez</h4>
+                  <p class="text-yellow-400 text-sm">💼 Gerente Solutions</p>
+                </div>
+              </div>
+              <p class="text-gray-300 italic">"El soporte técnico 24/7 es excepcional. Siempre disponibles."</p>
+              <div class="flex mt-4">
+                <span class="text-yellow-400">⭐⭐⭐⭐⭐</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      </div>
+    </section>
+
+  <!-- FOOTER - DISEÑO HEXAGONAL -->
+  <footer class="bg-black text-white py-20">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-4 gap-12 mb-16">
+        
+        <!-- Columna 1 - Logo y descripción -->
+        <div class="md:col-span-2">
+          <div class="flex items-center mb-8">
+            <div class="hexagon mr-4 floating">
+              <span class="text-2xl">📞</span>
+            </div>
+            <h3 class="text-6xl font-black transform hover:scale-105 transition-all duration-300 company-glow" style="color: #000000 !important; -webkit-text-fill-color: #000000 !important; text-shadow: 0 0 30px rgba(255, 0, 0, 0.8), 0 0 60px rgba(255, 69, 0, 0.6);">Ecoranch</h3>
+          </div>
+            <p class="text-gray-300 mb-8 text-lg leading-relaxed">
+            <span class="text-cyan-400 font-bold text-xl">Ecoranch</span> revoluciona la comunicación empresarial con servicios de call center innovadores y soluciones personalizadas que conectan marcas con sus clientes de manera excepcional.
+          </p>
+          <div class="flex space-x-6">
+            <a href="#" class="w-12 h-12 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full flex items-center justify-center hover:scale-110 transition">
+              <span>📱</span>
+            </a>
+            <a href="#" class="w-12 h-12 bg-gradient-to-r from-blue-500 to-green-500 rounded-full flex items-center justify-center hover:scale-110 transition">
+              <span>💼</span>
+            </a>
+            <a href="#" class="w-12 h-12 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full flex items-center justify-center hover:scale-110 transition">
+              <span>🌐</span>
+            </a>
           </div>
         </div>
         
-                <div class="contact-info">
-                    <div class="business-hours">
-                        <h4>Horarios de Atención</h4>
-                        <p><strong>Días de atención:</strong></p>
-                        <p>Lunes a Viernes: 9:00 a 18:00 hs</p>
-                        <p>Sábados: 9:00 a 15:00 hs</p>
-                        <br>
-                        <p><strong>Atención de emergencias:</strong></p>
-                        <p>Disponible 24/7</p>
-                        <p>WhatsApp: +5491164703496</p>
+        <!-- Columna 2 - Contacto con iconos diferentes -->
+        <div>
+          <div class="flex items-center mb-8">
+            <div class="w-8 h-8 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center mr-3">
+              <span>📍</span>
+            </div>
+            <h4 class="text-2xl font-bold text-cyan-300">Ubicación</h4>
+          </div>
+          <div class="space-y-6 text-gray-300">
+            <div class="flex items-start space-x-4">
+              <div class="w-6 h-6 bg-cyan-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <span class="text-xs">🏠</span>
+              </div>
+              <span>Ringuelet 6320, Mar Del Plata</span>
+            </div>
+            <div class="flex items-center space-x-4">
+              <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                <span class="text-xs">📞</span>
+              </div>
+              <a href="tel:+5491164703453" class="hover:text-yellow-400 transition text-lg font-bold">+5491164703453</a>
+            </div>
+            <div class="flex items-center space-x-4">
+              <div class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center">
+                <span class="text-xs">✉️</span>
+              </div>
+              <span>contacto@ecoranch.com</span>
+            </div>
+            <div class="flex items-center space-x-4">
+              <div class="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center">
+                <span class="text-xs">🆔</span>
+              </div>
+              <span class="text-lg font-bold">CUIL: 20476421250</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Columna 3 - Horarios con nuevo diseño -->
+        <div>
+          <div class="flex items-center mb-8">
+            <div class="w-8 h-8 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center mr-3">
+              <span>⏰</span>
+            </div>
+            <h4 class="text-2xl font-bold text-yellow-300">Disponibilidad</h4>
+          </div>
+          <div class="space-y-4 text-gray-300">
+            <div class="bg-teal-800/30 p-4 rounded-xl border border-cyan-500/30">
+              <p class="font-bold text-green-400 mb-2">🟢 Call Center</p>
+              <p>24 horas / 7 días</p>
+            </div>
+            <div class="bg-teal-800/30 p-4 rounded-xl border border-cyan-500/30">
+              <p class="font-bold text-blue-400 mb-2">🏢 Oficinas</p>
+              <p>Lun-Vie: 08:00-20:00</p>
+              <p>Sáb: 09:00-15:00</p>
             </div>
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Produlse. Todos los derechos reservados</p>
-            <p>Servicios de alojamiento de calidad en Mar del Plata</p>
+      
+      <div class="border-t border-cyan-500/30 pt-12 text-center">
+        <div class="flex justify-center items-center mb-6">
+          <div class="w-16 h-16 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full flex items-center justify-center text-2xl floating">
+            💎
+          </div>
+        </div>
+        <p class="text-red-300 mb-3 text-2xl font-black">
+          <span class="text-3xl font-black" style="color: #000000 !important; text-shadow: 0 0 20px rgba(255, 0, 0, 0.8);">Ecoranch</span> - Innovación en Comunicación Empresarial
+        </p>
+        <p class="text-gray-400">© 2024 Todos los derechos reservados | Diseñado con 💙 para conectar empresas</p>
+      </div>
     </div>
   </footer>
 
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Add scrolling effect to navigation
-        window.addEventListener('scroll', function() {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 100) {
-                nav.style.background = 'rgba(55, 65, 81, 0.98)';
-            } else {
-                nav.style.background = 'rgba(55, 65, 81, 0.95)';
-            }
-        });
-    </script>
-
-    <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/5491164703496?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20sus%20servicios%20de%20alojamiento" class="whatsapp-float" target="_blank" title="Contactar por WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+  <!-- BOTÓN FLOTANTE DE WHATSAPP - NUEVO DISEÑO -->
+  <a 
+    href="https://wa.me/5491164703453?text=¡Hola%20Ecoranch!%20🚀%20Me%20interesa%20conocer%20sus%20servicios%20de%20call%20center%20innovadores%20y%20revolucionarios" 
+    target="_blank"
+    class="fixed bottom-8 right-8 whatsapp-btn text-white p-6 rounded-full shadow-2xl z-50 transition-all duration-300 hover:scale-110 group"
+    aria-label="Contactar por WhatsApp"
+  >
+    <div class="relative">
+      <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.465 3.488"/>
+      </svg>
+      <!-- Indicador de notificación -->
+      <div class="absolute -top-2 -right-2 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center text-xs font-bold floating">
+        💬
+      </div>
+    </div>
+  </a>
 
 </body>
 </html>
